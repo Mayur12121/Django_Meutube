@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center mt-3">ABC List</h1>
+
+<a class="btn btn-primary mb-3" href="{% url 'list_create' %}">Create List</a>
+
+<div class="container row gap-3">
+    {% for abc in abc_list %}
+    <div class="card" style="width: 18rem;">
+        <img src="{{ abc.photo.url }}" class="card-img-top" alt="Photo">
+        <div class="card-body">
+            <h5 class="card-title">{{ abc.user.username }}</h5>
+            <p class="card-text">{{ abc.text }}</p>
+            {% if request.user == abc.user %}
+            <a href="{% url 'list_edit' abc.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'list_delete' abc.id %}" class="btn btn-danger">Delete</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

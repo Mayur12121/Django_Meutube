@@ -1,0 +1,15 @@
+{%extends "layout.html"%}
+{%block title%}
+{%endblock%}
+
+{%block content%}   
+<h1 class="text-center mt-3">list form</h1>
+<h3>{% if form.instance.pk %}Edit ABC{% else %}Create ABC{% endif %}</h3>
+<form method="post" enctype="multipart/form-data" class="form">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-warning" type="submit">Submit</button>
+</form>
+<a href="{% url 'abc_list' %}">Back to list</a>
+
+{%endblock%}
