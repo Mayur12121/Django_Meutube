@@ -62,7 +62,6 @@ def register(request):
         form = UserRegistrationForm()
     return render(request, 'registration/register.html', {"form": form})
 
-@login_required
 def play_video(request, id):
     abc = get_object_or_404(ABC, pk=id)
     return render(request, 'play_video.html', {'abc': abc})
