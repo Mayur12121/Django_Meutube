@@ -11,7 +11,17 @@
 <div class="container row gap-3">
     {% for abc in abc_list %}
     <div class="card" style="width: 18rem;">
-        <img src="{{ abc.photo.url }}" class="card-img-top" alt="Photo">
+    <a href="{% url 'play_video' abc.id %}"><img src="{{ abc.photo.url }}" class="card-img-top" alt="Photo"></a>
+        
+        {% if abc.video %}
+        <div id="video-{{ abc.id }}" style="display: none;">
+            <video width="100%" controls>
+                <source src="{{ abc.video.url }}" type="video/mp4">
+                Your browser does not support the video.
+            </video>
+        </div>
+        {% endif %}
+
         <div class="card-body">
             <h5 class="card-title">{{ abc.user.username }}</h5>
             <p class="card-text">{{ abc.text }}</p>
@@ -23,4 +33,15 @@
     </div>
     {% endfor %}
 </div>
+
+<script>
+function toggleVideo(videoId) {
+    const videoDiv = document.getElementById(videoId);
+    if (videoDiv.style.display === "none") {
+        videoDiv.style.display = "block";
+    } else {
+        videoDiv.style.display = "none";
+    }
+}
+</script>
 {% endblock %}
