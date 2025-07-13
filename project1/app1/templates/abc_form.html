@@ -2,14 +2,14 @@
 {%block title%}
 {%endblock%}
 
-{%block content%}   
-<h1 class="text-center mt-3">list form</h1>
-<h3>{% if form.instance.pk %}Edit ABC{% else %}Create ABC{% endif %}</h3>
+{%block content%}  
+<h1 class="text-center mt-3">{% if form.instance.pk %}EDIT POST{% else %}CREATE POST{% endif %}</h1>
+<h3>{% if form.instance.pk %}Edit your Post{% else %}Create your Post{% endif %}</h3>
 <form method="post" enctype="multipart/form-data" class="form">
     {% csrf_token %}
     {{form.as_p}}
     <button class="btn btn-warning" type="submit">Submit</button>
 </form>
-<a href="{% url 'abc_list' %}">Back to list</a>
+<a href="{% url 'abc_list' %}" class="btn btn-success mt-4">Back to Home</a>
 
 {%endblock%}

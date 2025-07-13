@@ -1,8 +1,9 @@
 {% extends "layout.html" %} 
 
 {% block content %}
-
-<h2>Login Form</h2>
+<div class="auth-wrapper">
+  <div class="auth-container">
+    <h2>Login Form</h2>
 <form method="post">
 {% csrf_token %}
 {{ form.as_p }}
@@ -12,3 +13,6 @@
 <p>Dont have an account? <a href="{% url 'register' %}" class="btn btn-primary" >Register here!</a></p>
 
 {% endblock %}
+  </div>
+</div>
+
